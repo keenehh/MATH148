@@ -1,0 +1,296 @@
+save datafile.mat
+
+^this will save all variables in the workspace to MAT-file named datefile.mat
+
+
+load datafile.mat
+
+^ this will load the variables from the file datafile.mat
+
+-----------------------------------------------------------------------------------------
+format long 
+
+format short
+
+^ these two commands will show the decimal
+
+
+
+matrices
+
+
+y = [7 9]
+
+y = 
+    7   9
+
+
+z = [7;9]
+
+z = 
+    7
+    9
+
+-----------------------------------------------------------------------------------------
+: operator creating evenly spaced vectors
+
+
+ex
+y = 1:10
+
+y = 
+    1   2   3   4   5   6   7   8   9   10
+
+
+x = 20:2:26
+x = 
+    20    22    24    26
+
+
+
+20 is the start. 2 is the increment. default is 1. 26 is the end
+start:increment:end
+-----------------------------------------------------------------------------------------
+
+linspace(first,last,number_of_elements)
+
+x = linspace(0,1,5)
+x = 
+    0    0.250    0.500    0.750    1.000
+
+
+
+-----------------------------------------------------------------------------------------
+' is the transpose operator
+
+x = 1:3
+x =
+    1    2    3
+
+x = x'
+x = 
+    1
+    2
+    3
+-----------------------------------------------------------------------------------------
+x = rand(5)
+# creates a 5x5 matrix with random numbers between 0 and 1
+
+x = rand(2)
+x = 
+    0.8147    0.1270
+    0.9058    0.9134
+
+x = rand(2,3)
+x = 
+    0.6324    0.2785    0.9575
+    0.0975    0.5469    0.9649
+
+
+
+rand(row,column)
+-----------------------------------------------------------------------------------------
+
+x = ones(2,3)
+x = 
+    1    1    1
+    1    1    1
+
+x = zeros(2,3)
+x = 
+    0    0    0
+    0    0    0
+
+
+-----------------------------------------------------------------------------------------
+size(x)
+# returns the size of the matrix
+
+
+x(3)
+# returns the 3rd element of the matrix
+
+x(3) = 1
+# changes the 3rd element of the matrix to 1
+
+x(2:4)
+# returns the 2nd to 4th element of the matrix
+
+x(1,2)
+# returns the element in the 1st row and 2nd column
+
+x(1,;)
+
+# returns the first row of the matrix
+
+x(:,3)
+# returns the 3rd column of the matrix
+
+y = data(end,3)
+
+# returns the last element of the 3rd column of the matrix
+
+z = data(end-1,3)
+# returns the second last element of the 3rd column of the matrix
+
+
+density = data(:,2)
+# returns the second column of the matrix and creates a new column vector named density
+
+
+r = v1+1
+# adds 1 to each element of the vector v1 and stores it in r
+
+vs = v1 + v2
+# adds the elements of v1 and v2 and stores it in vs
+
+va = vs/2
+# divides the elements of vs by 2 and stores it in va
+
+vm = max(va)
+# returns the maximum element of va and stores it in vm
+
+vr = round(va)
+# rounds the elements of va and stores it in vr
+
+mass = density .* va
+# multiplies the elements of density and va and stores it in mass
+
+dsize = size(data)
+# returns the size of the matrix data and stores it in dsize
+
+[dr,dc] = size(data)
+# returns the row and column size of the matrix data and stores it in dr and dc
+
+[vMax, ivMax] = max(v2)
+# returns the maximum element of v2 and its index and stores it in vMax and ivMax
+
+x = randi([1,20],5,7)
+# creates a 5x7 matrix with random integers between 1 and 20
+
+plot(sample,mass1)
+# plots the vectors sample and mass1
+
+plot(sample,mass2,"r*")
+# plots the vectors sample and mass2 with red stars
+
+hold on
+# holds the current plot
+
+plot(sample, mass1,"ks")
+# plots the vectors sample and mass1 with black squares
+# k is black and s is square
+
+hold off
+# releases the current plot
+
+plot(v1)
+# plots the vector v1
+
+plot(v1, LineWidth = 3)
+# plots the vector v1 with a line width of 3
+
+plot(sample, v1, "ro-", LineWidth = 4)
+# plots the vectors sample and v1 with red circles and a line connecting them with a line width of 4
+
+title("Sample Mass")
+# sets the title of the plot to "Sample Mass"
+
+ylabel("Mass (g)")
+# sets the y-axis label of the plot to "Mass (g)"
+
+legend("Exp A", "Exp B")
+# adds a legend to the plot with labels "Exp A" and "Exp B"
+
+d = elements.Density
+# accesses the field "Density" in the structure elements and stores it in d
+
+elements.Mass = elements.Density .* elements.Volume1
+# multiplies the fields "Density" and "Volume1" in the structure elements and stores the result in the field "Mass"
+
+x = pi < 4
+# returns 1 since pi is less than 4
+
+y = v1 < 4
+# returns a vector of 1s and 0s based on whether the elements of v1 are less than 4
+
+z = v1(v1 < 4)
+# returns the elements of v1 that are less than 4 and stores them in z
+
+a = sample(v1 < 4)
+# returns the elements of sample corresponding to the elements of v1 that are less than 4 and stores them in a
+
+v1(v1 < 4) = 0
+# sets the elements of v1 that are less than 4 to 0
+
+
+x = -4
+if x >= 0
+    xSqrt = sqrt(x)
+end
+xSq = x^2
+# calculates the square of x if x is non-negative
+
+
+for x = 1:5
+    xSq = x^2
+end
+# calculates the square of x for x = 1 to 5
+
+x = 1:5
+xSq = x.^2
+# calculates the square of each element of x
+
+
+if doPlot == 1
+    plot(density)
+    title("Sample Densities")
+    xticklabels(element)
+    ylabel("Density (g/cm^3)")
+end
+# if doPlot is equal to 1, plot the density data with appropriate labels
+
+
+if doPlot == 1
+    plot(density)
+    title("Sample Densities")
+    xticklabels(element)
+    ylabel("Density (g/cm^3)")
+else
+    disp("The density of " + element ...
+    + " is " + density)
+end
+# if doPlot is equal to 1, plot the density data with appropriate labels else display the density of the element
+
+
+hold on
+for idx = 1:10
+plot(idx,density(idx),"*")
+drawnow
+end
+hold off
+# plots the density data points one by one with a star marker
+
+
+
+load starData
+nObs = size(spectra,1)
+lambdaStart = 630.02
+lambdaDelta = 0.14
+
+lambdaEnd = lambdaStart + (nObs -1) * lambdaDelta
+lambda = (lambdaStart:lambdaDelta:lambdaEnd)
+
+s = spectra(:,6)
+
+hold on
+plot(lambdaHa,sHa,"rs",MarkerSize=8)
+hold off
+
+# Add a point to the existing axes by plotting x = lambdaHa, y = sHa as a red square ("rs") with a marker size (MarkerSize) of 8.
+
+
+for v = (1:7)
+    s = spectra(:,v)
+end
+# iterates over the columns of the spectra matrix and stores each column in the variable s
